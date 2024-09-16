@@ -1,5 +1,5 @@
 import './App.css';
-import PhonemeContainer from './components/PhonemeContainer/PhonemeContainer';
+import PhonemeContainerNew from './components/PhonemeContainerNew/PhonemeContainerNew';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <body className="App-body">
-        <PhonemeContainer phonemeData={phonemeData} />
+        <PhonemeContainerNew phonemeData={phonemeData} />
       </body>
     </div>
   );
