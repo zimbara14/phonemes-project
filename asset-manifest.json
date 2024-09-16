@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/phonemes-project/static/css/main.175de4e6.css",
+    "main.js": "/phonemes-project/static/js/main.843c436f.js",
+    "static/js/453.0df97b30.chunk.js": "/phonemes-project/static/js/453.0df97b30.chunk.js",
+    "index.html": "/phonemes-project/index.html",
+    "main.175de4e6.css.map": "/phonemes-project/static/css/main.175de4e6.css.map",
+    "main.843c436f.js.map": "/phonemes-project/static/js/main.843c436f.js.map",
+    "453.0df97b30.chunk.js.map": "/phonemes-project/static/js/453.0df97b30.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.175de4e6.css",
+    "static/js/main.843c436f.js"
+  ]
+}
