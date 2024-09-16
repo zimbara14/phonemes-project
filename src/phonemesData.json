@@ -1,0 +1,239 @@
+[
+  {
+    "phonemes:symbol": "p",
+    "phonemes:description": "A voiceless bilabial plosive.",
+    "phonemes:allophones": "p\u02b0 p",
+    "phonemes:length": "short",
+    "phonemes:isVoiced": false,
+    "phonemes:articulationManner": "plosive",
+    "phonemes:articulationPlace": "bilabial",
+    "phonemes:airstreamMechanism": "pulmonic egressive",
+    "phonemes:sonority": "voiceless",
+    "phonemes:isAspirated": "no",
+    "phonemes:belongsTo": [
+      {
+        "phonemes:languageName": "English",
+        "phonemes:languageRegion": "Germanic",
+        "phonemes:languageDescription": "English is a West Germanic language first spoken in early medieval England.",
+        "phonemes:hasDialect": [
+          {
+            "phonemes:dialectName": "American English",
+            "phonemes:dialectRegion": "USA",
+            "phonemes:dialectDescription": "A dialect of English spoken primarily in the United States."
+          },
+          {
+            "phonemes:dialectName": "British English",
+            "phonemes:dialectRegion": "UK",
+            "phonemes:dialectDescription": "A dialect of English spoken primarily in the United Kingdom."
+          }
+        ]
+      },
+      {
+        "phonemes:languageName": "Spanish",
+        "phonemes:languageRegion": "Romanic",
+        "phonemes:languageDescription": "Spanish is a Romance language that originated in the Iberian Peninsula.",
+        "phonemes:hasDialect": [
+          {
+            "phonemes:dialectName": "Mexican Spanish",
+            "phonemes:dialectRegion": "Mexico",
+            "phonemes:dialectDescription": "A dialect of Spanish spoken primarily in Mexico."
+          },
+          {
+            "phonemes:dialectName": "Castilian Spanish",
+            "phonemes:dialectRegion": "Spain",
+            "phonemes:dialectDescription": "A dialect of Spanish spoken primarily in Spain."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "phonemes:symbol": "y\u02d0",
+    "phonemes:description": "A long tense high front rounded vowel.",
+    "phonemes:allophones": "y\u02d0 y",
+    "phonemes:isVoiced": false,
+    "phonemes:length": "long",
+    "phonemes:tension": "tense",
+    "phonemes:height": "high",
+    "phonemes:isRounded": true,
+    "phonemes:backness": "front",
+    "phonemes:belongsTo": [
+      {
+        "phonemes:languageName": "German",
+        "phonemes:languageRegion": "Germanic",
+        "phonemes:languageDescription": "English is a West Germanic language first spoken in early medieval England."
+      },
+      {
+        "phonemes:languageName": "Hungarian",
+        "phonemes:languageRegion": "Germanic",
+        "phonemes:languageDescription": ""
+      }
+    ]
+  },
+  {
+    "phonemes:symbol": "\u0283",
+    "phonemes:description": "A voiceless postalveolar fricative.",
+    "phonemes:allophones": "",
+    "phonemes:length": "short",
+    "phonemes:isVoiced": false,
+    "phonemes:articulationManner": "fricative",
+    "phonemes:articulationPlace": "postalveolar",
+    "phonemes:airstreamMechanism": "pulmonic egressive",
+    "phonemes:sonority": "voiceless",
+    "phonemes:isAspirated": "no",
+    "phonemes:belongsTo": [
+      {
+        "phonemes:languageName": "English",
+        "phonemes:languageRegion": "Germanic",
+        "phonemes:languageDescription": "English is a West Germanic language first spoken in early medieval England.",
+        "phonemes:hasDialect": [
+          {
+            "phonemes:dialectName": "American English",
+            "phonemes:dialectRegion": "USA",
+            "phonemes:dialectDescription": "A dialect of English spoken primarily in the United States."
+          },
+          {
+            "phonemes:dialectName": "British English",
+            "phonemes:dialectRegion": "UK",
+            "phonemes:dialectDescription": "A dialect of English spoken primarily in the United Kingdom."
+          }
+        ]
+      },
+      {
+        "phonemes:languageName": "French",
+        "phonemes:languageRegion": "Romanic",
+        "phonemes:languageDescription": "French is a Romanic language of the Indo-European family.",
+        "phonemes:hasDialect": [
+          {
+            "phonemes:dialectName": "Parisian French",
+            "phonemes:dialectRegion": "France",
+            "phonemes:dialectDescription": "The standard dialect of French spoken in Paris and northern France."
+          },
+          {
+            "phonemes:dialectName": "Quebec French",
+            "phonemes:dialectRegion": "Canada",
+            "phonemes:dialectDescription": "A dialect of French spoken primarily in Quebec, Canada."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "phonemes:symbol": "\u025b",
+    "phonemes:description": "A low-mid front unrounded vowel.",
+    "phonemes:allophones": "",
+    "phonemes:isVoiced": true,
+    "phonemes:length": "short",
+    "phonemes:tension": "lax",
+    "phonemes:height": "low-mid",
+    "phonemes:isRounded": false,
+    "phonemes:backness": "front",
+    "phonemes:belongsTo": [
+      {
+        "phonemes:languageName": "English",
+        "phonemes:languageRegion": "Germanic",
+        "phonemes:languageDescription": "English is a West Germanic language first spoken in early medieval England.",
+        "phonemes:hasDialect": [
+          {
+            "phonemes:dialectName": "American English",
+            "phonemes:dialectRegion": "USA",
+            "phonemes:dialectDescription": "A dialect of English spoken primarily in the United States."
+          }
+        ]
+      },
+      {
+        "phonemes:languageName": "Dutch",
+        "phonemes:languageRegion": "Germanic",
+        "phonemes:languageDescription": "Dutch is a West Germanic language."
+      }
+    ]
+  },
+  {
+    "phonemes:symbol": "t",
+    "phonemes:description": "A voiceless alveolar plosive",
+    "phonemes:allophones": "t\u02b0 t",
+    "phonemes:isVoiced": false,
+    "phonemes:length": "short",
+    "phonemes:articulationManner": "plosive",
+    "phonemes:articulationPlace": "alveolar",
+    "phonemes:airstreamMechanism": "pulmonic egressive",
+    "phonemes:sonority": "medium",
+    "phonemes:isAspirated": "yes",
+    "phonemes:belongsTo": [
+      {
+        "phonemes:languageName": "English",
+        "phonemes:languageRegion": "Germanic",
+        "phonemes:languageDescription": "English is a West Germanic language first spoken in early medieval England.",
+        "phonemes:hasDialect": [
+          {
+            "phonemes:dialectName": "American English",
+            "phonemes:dialectRegion": "USA",
+            "phonemes:dialectDescription": "A dialect of English spoken primarily in the United States."
+          }
+        ]
+      },
+      {
+        "phonemes:languageName": "Serbian",
+        "phonemes:languageRegion": "Serbia, Balkans",
+        "phonemes:languageDescription": "Slavic language spoken primarily in Serbia",
+        "phonemes:hasDialect": [
+          {
+            "phonemes:dialectName": "\u0160umadija-Vojvodina",
+            "phonemes:dialectRegion": "Central Serbia",
+            "phonemes:dialectDescription": "A dialect of Serbian spoken in the central region"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "phonemes:symbol": "m",
+    "phonemes:description": "A long bilabial nasal consonant.",
+    "phonemes:allophones": "m m\u02d0",
+    "phonemes:isVoiced": true,
+    "phonemes:length": "long",
+    "phonemes:articulationManner": "nasal",
+    "phonemes:articulationPlace": "bilabial",
+    "phonemes:airstreamMechanism": "pulmonic egressive",
+    "phonemes:sonority": "low",
+    "phonemes:isAspirated": "no",
+    "phonemes:belongsTo": [
+      {
+        "phonemes:languageName": "English",
+        "phonemes:languageRegion": "Germanic",
+        "phonemes:languageDescription": "English is a West Germanic language first spoken in early medieval England.",
+        "phonemes:hasDialect": [
+          {
+            "phonemes:dialectName": "American English",
+            "phonemes:dialectRegion": "USA",
+            "phonemes:dialectDescription": "A dialect of English spoken primarily in the United States."
+          }
+        ]
+      },
+      {
+        "phonemes:languageName": "Serbian",
+        "phonemes:languageRegion": "Serbia, Balkans",
+        "phonemes:languageDescription": "Slavic language spoken primarily in Serbia",
+        "phonemes:hasDialect": [
+          {
+            "phonemes:dialectName": "\u0160umadija-Vojvodina",
+            "phonemes:dialectRegion": "Central Serbia",
+            "phonemes:dialectDescription": "A dialect of Serbian spoken in the central region"
+          }
+        ]
+      },
+      {
+        "phonemes:languageName": "French",
+        "phonemes:languageRegion": "Romanic",
+        "phonemes:languageDescription": "French is a Romanic language of the Indo-European family.",
+        "phonemes:hasDialect": [
+          {
+            "phonemes:dialectName": "Parisian French",
+            "phonemes:dialectRegion": "France",
+            "phonemes:dialectDescription": "The standard dialect of French spoken in Paris and northern France."
+          }
+        ]
+      }
+    ]
+  }
+]

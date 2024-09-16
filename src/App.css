@@ -1,0 +1,38 @@
+.App {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  /* Include padding/border in the width calculations */
+  width: 100%;             /* Make sure the container takes full width */
+}
+
+.App-body {
+  display: flex;           /* Make App-body a flex container */
+  flex-direction: column;  /* Column layout */
+  align-items: center;     /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  min-height: 100vh;       /* Full viewport height */
+  padding: 20px 400px;           /* Add padding around the content */
+  box-sizing: border-box;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.phoneme-container {
+  width: 100%;            /* Make sure container takes the full width */
+  padding: 20px;          /* Padding on all sides */
+  display: flex;          /* Use flexbox layout */
+  flex-wrap: wrap;        /* Allow items to wrap */
+  justify-content: center; /* Center the items */
+  gap: 20px;              /* Space between items */
+  box-sizing: border-box; /* Include padding in width calculations */
+}

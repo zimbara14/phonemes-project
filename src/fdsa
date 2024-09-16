@@ -1,0 +1,65 @@
+<!-- 
+
+DELETE {
+  # Define the triples you want to remove (if any)
+  phonemes:Phoneme1 phonemes:symbol ?oldSymbol ;
+                   phonemes:description ?oldDescription ;
+                   phonemes:length ?oldLength ;
+                   phonemes:voicing ?oldVoicing ;
+                   phonemes:articulationManner ?oldArticulation ;
+                   phonemes:labialType ?oldLabialType .
+}
+INSERT {
+  # Define the new triples to insert
+  phonemes:Phoneme1 a phonemes:Labial , phonemes:Consonant ;
+                   phonemes:symbol "p" ;
+                   phonemes:description "A voiceless bilabial plosive." ;
+                   phonemes:length "short" ;
+                   phonemes:voicing "unvoiced" ;
+                   phonemes:articulationManner "plosive" ;
+                   phonemes:labialType "bilabial" .
+  
+  # Add language and dialect information
+  phonemes:Phoneme1 phonemes:belongsTo phonemes:Language1 , phonemes:Language2 .
+  
+  phonemes:Language1 a phonemes:Language ;
+                    phonemes:languageName "English" ;
+                    phonemes:languageRegion "Germanic" ;
+                    phonemes:languageDescription "English is a West Germanic language first spoken in early medieval England." ;
+                    phonemes:hasDialect phonemes:Dialect1 , phonemes:Dialect2 .
+  
+  phonemes:Dialect1 a phonemes:Dialect ;
+                   phonemes:dialectName "American English" ;
+                   phonemes:dialectRegion "USA" ;
+                   phonemes:dialectDescription "A dialect of English spoken primarily in the United States." .
+  
+  phonemes:Dialect2 a phonemes:Dialect ;
+                   phonemes:dialectName "British English" ;
+                   phonemes:dialectRegion "UK" ;
+                   phonemes:dialectDescription "A dialect of English spoken primarily in the United Kingdom." .
+  
+  phonemes:Language2 a phonemes:Language ;
+                    phonemes:languageName "Spanish" ;
+                    phonemes:languageRegion "Romanic" ;
+                    phonemes:languageDescription "Spanish is a Romance language that originated in the Iberian Peninsula." ;
+                    phonemes:hasDialect phonemes:Dialect3 , phonemes:Dialect4 .
+  
+  phonemes:Dialect3 a phonemes:Dialect ;
+                   phonemes:dialectName "Mexican Spanish" ;
+                   phonemes:dialectRegion "Mexico" ;
+                   phonemes:dialectDescription "A dialect of Spanish spoken primarily in Mexico." .
+  
+  phonemes:Dialect4 a phonemes:Dialect ;
+                   phonemes:dialectName "Castilian Spanish" ;
+                   phonemes:dialectRegion "Spain" ;
+                   phonemes:dialectDescription "A dialect of Spanish spoken primarily in Spain." .
+}
+WHERE {
+  # Define the condition for the update
+  OPTIONAL { phonemes:Phoneme1 phonemes:symbol ?oldSymbol }
+  OPTIONAL { phonemes:Phoneme1 phonemes:description ?oldDescription }
+  OPTIONAL { phonemes:Phoneme1 phonemes:length ?oldLength }
+  OPTIONAL { phonemes:Phoneme1 phonemes:voicing ?oldVoicing }
+  OPTIONAL { phonemes:Phoneme1 phonemes:articulationManner ?oldArticulation }
+  OPTIONAL { phonemes:Phoneme1 phonemes:labialType ?oldLabialType }
+} -->
