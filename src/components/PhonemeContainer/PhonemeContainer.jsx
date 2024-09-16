@@ -3,7 +3,7 @@ import PhonemeCard from '../PhonemeCard/PhonemeCard';
 import { useEffect } from 'react';
 import axios from 'axios';
 import queryOptions from '../queryOptions'
-import { Helmet } from 'react-helmet-async';
+import queryOptionsAdditional from '../queryOptionsAdditional';
 
 const sparqlUpdateEndpoint = "http://localhost:3030/pho/update"
 const sparqlQueryEndpoint = "http://localhost:3030/pho/query"
@@ -11,6 +11,7 @@ const sparqlQueryEndpoint = "http://localhost:3030/pho/query"
 const PhonemeContainer = ({ phonemeData }) => {
 
   const [selectedQuery, setSelectedQuery] = useState("");
+  const [selectedQueryAdditional, setSelectedQueryAdditional] = useState("");
   const [phonemes, setPhonemes] = useState([]);
 
   useEffect(() => {
@@ -19,6 +20,16 @@ const PhonemeContainer = ({ phonemeData }) => {
       // if (!data || data.length === 0) {
       //   console.log("No data received");
       //   return;
+      // }
+
+      // if(phonemeData && phonemeData.length > 0) {
+      //   const script = document.createElement('script');
+      //   script.type = 'application/ld+json';
+      //   script.innerHTML = JSON.stringify(jsonLdData);
+      //   document.head.appendChild(script); // Inject it into the head of the document
+      //   return () => {
+      //     document.head.removeChild(script);
+      //   };
       // }
 
       for (const phoneme of data) {
@@ -145,6 +156,90 @@ const PhonemeContainer = ({ phonemeData }) => {
     fetchData();
   }, [selectedQuery]);
 
+  useEffect(() => {
+    if (phonemes.length > 0) {
+      // const jsonLdData = {
+      //   "@context": "https://schema.org",
+      //   "@type": "WebPage",
+      //   "name": "Phonemes Project",
+      //   "description": "A project to demonstrate phonemes ontology and data.",
+      //   "phonemes": phonemes
+      // };
+
+      // const script = document.createElement('script');
+      // script.type = 'application/ld+json';
+      // script.innerHTML = JSON.stringify(jsonLdData);
+      // document.head.appendChild(script); // Inject it into the head
+
+      // return () => {
+      //   document.head.removeChild(script); // Cleanup to remove the script
+      // };
+      console.log(phonemes[0])
+      const jsonLdData = {
+        "@context": {
+          "phonemes": "https://zimbara14.github.io/phonemes-ontology/Phonemes-ontology-updated.rdf#",
+          "schema": "http://schema.org/"
+        },
+        "@type": "schema:WebPage",
+        "schema:name": "Phonemes Project",
+        "schema:description": "A project to demonstrate phonemes ontology and data.",
+        "phonemes:phonemeCollection": phonemes.map(phoneme => ({
+          "@id": `phonemes:Phoneme#${phoneme.symbol}`, // Assuming unique symbol for each phoneme
+          "@type": "phonemes:Phoneme",
+          "phonemes:symbol": phoneme.symbol,
+          "phonemes:description": phoneme.description,
+          "phonemes:allophones": phoneme.allophones,
+          "phonemes:isVoiced": phoneme.isVoiced ? "true" : "false",
+          "phonemes:length": phoneme.length,
+          
+          // Only include consonant-specific properties if they exist
+          ...(phoneme.articulationManner && {
+            "phonemes:articulationManner": phoneme.articulationManner,
+            "phonemes:articulationPlace": phoneme.articulationPlace,
+            "phonemes:airstreamMechanism": phoneme.airstreamMechanism,
+            "phonemes:sonority": phoneme.sonority,
+            "phonemes:isAspirated": phoneme.isAspirated === 'yes' ? "true" : "false",
+          }),
+          
+          // Only include vowel-specific properties if they exist
+          ...(phoneme.tension && {
+            "phonemes:tension": phoneme.tension,
+            "phonemes:height": phoneme.height,
+            "phonemes:backness": phoneme.backness,
+            "phonemes:isRounded": phoneme.isRounded ? "true" : "false",
+          }),
+  
+          // Language and dialect information
+          ...(phoneme.belongsTo && phoneme.belongsTo.length > 0 && {
+            "phonemes:belongsTo": phoneme.belongsTo.map(language => ({
+              "@id": `phonemes:Language#${language.languageName}`,
+              "@type": "phonemes:Language",
+              "phonemes:languageName": language.languageName,
+              "phonemes:languageRegion": language.languageRegion,
+              "phonemes:languageDescription": language.languageDescription,
+              "phonemes:hasDialect": language.hasDialect.map(dialect => ({
+                "@id": `phonemes:Dialect#${dialect.dialectName}`,
+                "@type": "phonemes:Dialect",
+                "phonemes:dialectName": dialect.dialectName,
+                "phonemes:dialectRegion": dialect.dialectRegion,
+                "phonemes:dialectDescription": dialect.dialectDescription
+              }))
+            }))
+          })
+        }))
+      };
+  
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.innerHTML = JSON.stringify(jsonLdData);
+      document.head.appendChild(script);
+  
+      return () => {
+        document.head.removeChild(script);
+      };
+    }
+  }, [phonemes]); // Runs whenever phonemes are updated
+
   return (
     <div>
       <h1 className="phoneme-title">Phonemes</h1>
@@ -156,6 +251,18 @@ const PhonemeContainer = ({ phonemeData }) => {
         >
           {/* <option value="">Select a query</option> */}
           {queryOptions.map((option, index) => (
+            <option key={index} value={option.query}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+        <select
+          value={selectedQueryAdditional}
+          onChange={(e) => setSelectedQueryAdditional(e.target.value)}
+          className="query-dropdown"
+        >
+          <option value="">Select a query</option>
+          {queryOptionsAdditional.map((option, index) => (
             <option key={index} value={option.query}>
               {option.label}
             </option>
