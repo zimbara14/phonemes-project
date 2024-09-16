@@ -22,9 +22,9 @@ function App() {
   
   return (
     <div className="App">
-      <body className="App-body">
+      <div className="App-body">
         <PhonemeContainerNew phonemeData={phonemeData} />
-      </body>
+      </div>
     </div>
   );
 }

@@ -2,18 +2,20 @@ import React, { useState, useEffect } from 'react';
 import PhonemeCard from '../PhonemeCard/PhonemeCard';
 import axios from 'axios';
 import queryOptions from '../queryOptions';
+import generateCombinedQuery from '../generateCombinedQuery'
 
 const sparqlUpdateEndpoint = "http://localhost:3030/pho/update";
 const sparqlQueryEndpoint = "http://localhost:3030/pho/query";
 
 const PhonemeContainerNew = ({ phonemeData }) => {
   const [selectedQuery, setSelectedQuery] = useState("");
+  const [isVoiced, setIsVoiced] = useState("All");
+  const [selectedQueryAdditional, setSelectedQueryAdditional] = useState("All phonemes");
   const [phonemes, setPhonemes] = useState([]);
 
   useEffect(() => {
     const insertData = async (data) => {
       if (!data || data.length === 0) {
-        console.log("No data received");
         return;
       }
 
@@ -101,12 +103,10 @@ const PhonemeContainerNew = ({ phonemeData }) => {
           `update=${encodeURIComponent(updateQuery)}`,
           { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
         );
-        console.log("Batch insertion successful.");
       } catch (error) {
         console.error("Error inserting batch data for phonemes: ", error.response ? error.response.data : error.message);
       }
     };
-
     insertData(phonemeData).then(() => setSelectedQuery(queryOptions[0].query));
   }, [phonemeData]);
 
@@ -121,8 +121,8 @@ const PhonemeContainerNew = ({ phonemeData }) => {
       "schema:name": "Phonemes Project",
       "schema:description": "A project to demonstrate phonemes ontology and data.",
       "phonemes:phonemeCollection": phonemes.map(phoneme => ({
-        "@id": `phonemes:Phoneme#${phoneme.symbol}`, // Assuming unique symbol for each phoneme
-        "@type": `${phoneme.type}`,
+        "@id": `phonemes:Phoneme#${phoneme.symbol}`,
+        "@type": `${phoneme.type}`, // type things!
         "phonemes:symbol": phoneme.symbol,
         "phonemes:description": phoneme.description,
         "phonemes:allophones": phoneme.allophones,
@@ -184,12 +184,13 @@ const PhonemeContainerNew = ({ phonemeData }) => {
   const fetchData = async () => {
     if (!selectedQuery) return;
 
+    const combinedQuery = generateCombinedQuery(selectedQueryAdditional, isVoiced);
+
     try {
       const response = await axios.get(sparqlQueryEndpoint, {
-        params: { query: selectedQuery },
+        params: { query: combinedQuery},
         headers: { Accept: "application/sparql-results+json" },
       });
-      console.log('Raw Response:', response.data);
 
       const results = response.data.results.bindings.map((binding) => {
         return Object.keys(binding).reduce((acc, key) => {
@@ -197,7 +198,6 @@ const PhonemeContainerNew = ({ phonemeData }) => {
           return acc;
         }, {});
       });
-      console.log(results);
       setPhonemes(results);
     } catch (error) {
       console.error("Error querying data:", error);
@@ -206,7 +206,7 @@ const PhonemeContainerNew = ({ phonemeData }) => {
 
   useEffect(() => {
     fetchData();
-  }, [selectedQuery]);
+  }, [selectedQuery, selectedQueryAdditional, isVoiced]);
 
   return (
     <div>
@@ -214,7 +214,10 @@ const PhonemeContainerNew = ({ phonemeData }) => {
       <div className="query-selector">
         <select
           value={selectedQuery}
-          onChange={(e) => setSelectedQuery(e.target.value)}
+          onChange={(e) => {
+            setSelectedQuery(e.target.value);
+            setSelectedQueryAdditional(e.target.options[e.target.selectedIndex].text)
+          }}
           className="query-dropdown"
         >
           {queryOptions.map((option, index) => (
@@ -223,9 +226,19 @@ const PhonemeContainerNew = ({ phonemeData }) => {
             </option>
           ))}
         </select>
-        
+        <select
+          value={isVoiced}
+          onChange={(e) => {
+            const selectedValue = e.target.value;
+            setIsVoiced(selectedValue);
+          }}
+          className="query-dropdown"
+        >
+          <option value="All">All (Voiced and Unvoiced)</option>
+          <option value="Voiced">Voiced</option>
+          <option value="Unvoiced">Unvoiced</option>
+        </select>
       </div>
-      
       <div className="phoneme-container">
         {phonemes.map((phoneme, index) => (
           <PhonemeCard key={index} props={phoneme} />
